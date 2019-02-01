@@ -1,0 +1,12 @@
+{
+	"global" : {},
+	"materials" : 
+	[
+		{
+			"albedo" : "Icon/Model/UFO_icon.png",
+			"blendmode" : "opaque",
+			"name" : "com_magicleap_abductor_unity_UFO_Mat",
+			"shaderName" : "UnlitTextured"
+		}
+	]
+}

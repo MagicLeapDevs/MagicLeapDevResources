@@ -1,0 +1,19 @@
+{
+	"global" : {},
+	"materials" : 
+	[
+		{
+			"albedo" : "Icon/Portal/InsidePortal_SkySphere.png",
+			"blendmode" : "opaque",
+			"name" : "com_magicleap_abductor_unity_InsidePortal_SkySphere_Mat",
+			"shaderName" : "UnlitTextured"
+		},
+		{
+			"albedo" : "Icon/Portal/Ring.png",
+			"blendmode" : "opaque",
+			"name" : "com_magicleap_abductor_unity_Ring_Mat",
+			"shaderName" : "UnlitTextured"
+		}
+		
+	]
+}

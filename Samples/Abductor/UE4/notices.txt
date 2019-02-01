@@ -1,0 +1,90 @@
+#####################################################################################
+
+BEGIN MAGIC LEAP ADBUCTOR NOTICES
+
+This listing provides notice and guidance regarding the indicated items and should not be construed as an admission that the listed component appears in the distribution or in the manner indicated.  For example, the listing may include various dependencies applicable only to development, testing, and evaluation, which may not be included in the distribution and, indeed, may have been deprecated in favor of alternatives.  Similarly, fulfilling a licensee’s compliance requirements for a particular form of distribution is not an admission that the software is in fact distributed in that form.  For example, some dependencies may be dual-licensed and may permit redistribution under different licenses.  Distributions and packaging vary and not all third party components are relied upon in the same manner or degree. The presence of a dependency under a given header below is merely for organizational purposes and is not necessarily indicative of the relevant, or elected, license.  Where dependency authors provided incomplete or inconsistent documentation, inferences have been made with the intention of giving effect to the dependency author’s desired intent.  Note that some compliance documentation may be found in the software itself.  For dependencies appearing in this product, that require access to source code materials, if an offer is not stated below, you may contact Magic Leap directly to receive the materials required under that license.  Note that where identical license documentation appears in multiple locations of the dependency source code, the documentation may have been presented below only once to facilitate concision.  
+
+
+
+TABLE OF CONTENTS:
+
+
+
+-------------------
+
+OTHER LICENSED THIRD PARTY CODE
+
+-------------------
+
+
+Bfrx
+
+
+-------------------
+
+RESTRICTED ASSETS
+
+-------------------
+
+
+Lomino Font (Copyright (c) 2017 Magic Leap, Inc.)
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+BEGIN OTHER LICENSED THIRD PARTY CODE
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+////Begin:Bfxr--------------------
+
+https://www.bfxr.net/ retrieved 6/13/2018 recites
+
+"You have full rights to all sounds made with bfxr, and are free to use them for any purposes, commercial or otherwise."
+
+//////End:Bfxr--------------------
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+END OTHER LICENSED THIRD PARTY CODE
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+BEGIN RESTRICTED ASSETS
+
+-------------------------------------------------------------------------------------------------------------------
+
+////Begin:Lomino Font--------------------
+
+
+Lomino Font (Copyright (c) 2017 Magic Leap, Inc.)
+
+The Lomino font in all file formats (e.g., .TFF, .uasset or other) is made available as a “Restricted Asset” as defined in the Magic Leap Creator Agreement.
+
+
+
+//////End:Lomino Font--------------------
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+END RESTRICTED ASSETS
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+
+END MAGIC LEAP ABDUCTOR NOTICES
+
+#####################################################################################
+
