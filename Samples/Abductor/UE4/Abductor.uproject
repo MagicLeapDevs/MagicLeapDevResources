@@ -1,12 +1,11 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{B30C8B3D-48B1-A677-ED5F-F299613DEE06}",
+	"EngineAssociation": "{3D15889C-4800-0DE9-3D17-6A8C47CDE2D8}",
 	"Category": "",
 	"Description": "",
-	"Plugins": [
-		{
-			"Name": "ResonanceAudio",
-			"Enabled": true
-		}
+	"TargetPlatforms": [
+		"Lumin",
+		"WindowsNoEditor",
+		"AllDesktop"
 	]
 }
