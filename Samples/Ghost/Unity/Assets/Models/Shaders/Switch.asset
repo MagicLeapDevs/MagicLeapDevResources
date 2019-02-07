@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: Switch
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15301\n232;221;1649;768;824.5;384;1;True;True\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;7;15.5,32;Float;False;2;2;0;INT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;4;-193.5,12;Float;False;1;0;INT;0;False;1;INT;0\nNode;AmplifyShaderEditor.FunctionInput;2;-181.5,136;Float;False;False;1;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;1;-188.5,-153;Float;False;True;1;2;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;6;179.5,-61;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;5;13.5,-119;Float;False;2;2;0;FLOAT;0;False;1;INT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;3;-521.5,-104;Float;False;Value;0;0;False;1;0;INT;0;False;1;INT;0\nNode;AmplifyShaderEditor.ClampOpNode;8;-381.5,-100;Float;False;3;0;INT;0;False;1;INT;0;False;2;INT;1;False;1;INT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;350,-60;Float;False;True;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;7;0;4;0\nWireConnection;7;1;2;0\nWireConnection;4;0;8;0\nWireConnection;6;0;5;0\nWireConnection;6;1;7;0\nWireConnection;5;0;1;0\nWireConnection;5;1;8;0\nWireConnection;8;0;3;0\nWireConnection;0;0;6;0\nASEEND*/\n//CHKSM=1FD8F857B583DCA600638955FBBC5C5F8738B118"
+  m_functionName: 
+  m_description: 
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_nodeCategory: 3
+  m_customNodeCategory: 
+  m_previewPosition: 0

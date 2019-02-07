@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: FresnelFunction
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15301\n-1656;192;1649;768;1845.797;782.7778;1.6;True;True\nNode;AmplifyShaderEditor.OneMinusNode;14;676.6252,-443.1259;Float;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;33;1775.796,-250.2486;Float;False;Switch;-1;;19;974ecc9304851e542bb4fd92cee24773;0;3;3;INT;0;False;2;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;12;-283.1146,-580.2308;Float;True;Clamp
+    Fresnel Dot product (MA);0;2;False;1;0;INT;0;False;1;INT;0\nNode;AmplifyShaderEditor.ObjectToWorldTransfNode;27;-847.3727,-377.8078;Float;False;1;0;FLOAT4;0,0,0,1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.DotProductOpNode;4;-189.1101,-365.7952;Float;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;20;1269.201,-512.8408;Float;False;Use
+    Cheap Contrast (MA);0;0;False;1;0;INT;0;False;1;INT;0\nNode;AmplifyShaderEditor.FunctionInput;16;579.0247,-612.7653;Float;False;Invert
+    Fresnel (MA);0;1;False;1;0;INT;0;False;1;INT;0\nNode;AmplifyShaderEditor.FunctionInput;25;-636.3376,-79.71252;Float;False;Camera
+    Vector (V3);3;5;False;1;0;FLOAT3;1,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;38;-378.5963,-192.3778;Float;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.PowerNode;8;1313.881,-322.9673;Float;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;24;-482.7719,-363.9804;Float;False;Normal
+    Vector (V3);3;7;False;1;0;FLOAT3;1,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;30;-1149.953,43.90323;Float;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.LerpOp;19;1294.763,-129.4096;Float;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.NormalVertexDataNode;26;-1066.079,-379.313;Float;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.ClampOpNode;13;167.7074,-589.5256;Float;False;3;0;INT;0;False;1;INT;0;False;2;INT;1;False;1;INT;0\nNode;AmplifyShaderEditor.ClampOpNode;21;1527.145,-457.0688;Float;False;3;0;INT;0;False;1;INT;0;False;2;INT;1;False;1;INT;0\nNode;AmplifyShaderEditor.ClampOpNode;17;806.7592,-598.8223;Float;False;3;0;INT;0;False;1;INT;0;False;2;INT;1;False;1;INT;0\nNode;AmplifyShaderEditor.FunctionNode;34;397.9806,-412.881;Float;False;Switch;-1;;17;974ecc9304851e542bb4fd92cee24773;0;3;3;INT;0;False;2;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;22;967.1035,-101.5238;Float;False;Cheap
+    Contrast Dark (S);1;4;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;31;-1078.085,-115.5531;Float;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;32;-824.3026,-34.70198;Float;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ClampOpNode;5;12.26957,-278.9493;Float;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;23;969.4274,0.7245111;Float;False;Cheap
+    Contrast Bright (S);1;6;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;10;1050.195,-211.725;Float;False;Power
+    (S);1;3;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;35;1022.875,-398.9732;Float;False;Switch;-1;;18;974ecc9304851e542bb4fd92cee24773;0;3;3;INT;0;False;2;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;2062.21,-252.5355;Float;False;True;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;14;0;34;0\nWireConnection;33;3;21;0\nWireConnection;33;2;8;0\nWireConnection;33;1;19;0\nWireConnection;27;0;26;0\nWireConnection;4;0;24;0\nWireConnection;4;1;38;0\nWireConnection;25;0;32;0\nWireConnection;38;0;25;0\nWireConnection;8;0;35;0\nWireConnection;8;1;10;0\nWireConnection;24;0;27;0\nWireConnection;19;0;22;0\nWireConnection;19;1;23;0\nWireConnection;19;2;35;0\nWireConnection;13;0;12;0\nWireConnection;21;0;20;0\nWireConnection;17;0;16;0\nWireConnection;34;3;13;0\nWireConnection;34;2;4;0\nWireConnection;34;1;5;0\nWireConnection;32;0;31;0\nWireConnection;32;1;30;0\nWireConnection;5;0;4;0\nWireConnection;35;3;17;0\nWireConnection;35;2;14;0\nWireConnection;35;1;34;0\nWireConnection;0;0;33;0\nASEEND*/\n//CHKSM=30DE3E58FA0E10DBD2A35EEDF8326FF41F966464"
+  m_functionName: 
+  m_description: 
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_nodeCategory: 3
+  m_customNodeCategory: 
+  m_previewPosition: 0
