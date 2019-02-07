@@ -11,6 +11,9 @@ public class Timer {
     public void stop() {
         startTime = -1;
     }
+    public bool isRunning() {
+        return (startTime >= 0f) ? true : false;
+    }
     public float getTime() {
         float returnTime = -1f;
         if (startTime > 0f) {
@@ -20,3 +23,4 @@ public class Timer {
     }
 
 }
+

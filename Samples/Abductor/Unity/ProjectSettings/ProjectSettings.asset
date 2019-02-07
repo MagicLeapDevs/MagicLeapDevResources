@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: b274108ac85d6a045aa4f838bf71b1bd
+  productGUID: a43efcc2a811f2544ba3879e9c82ebb0
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: YourCompany
   productName: Abductor
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -20,7 +20,7 @@ PlayerSettings:
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
-  m_SplashScreenAnimation: 1
+  m_SplashScreenAnimation: 0
   m_SplashScreenLogoStyle: 0
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
@@ -75,7 +75,7 @@ PlayerSettings:
   Force IOS Speakers When Recording: 0
   deferSystemGesturesMode: 0
   hideHomeButton: 0
-  submitAnalytics: 1
+  submitAnalytics: 0
   usePlayerLog: 1
   bakeCollisionMeshes: 0
   forceSingleInstance: 0
@@ -156,7 +156,8 @@ PlayerSettings:
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Lumin: com.yourcompany.abductor
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -264,6 +265,10 @@ PlayerSettings:
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings:
+  - m_BuildTarget: Lumin
+    m_Enabled: 1
+    m_Devices:
+    - Lumin
   - m_BuildTarget: Standalone
     m_Enabled: 1
     m_Devices:
@@ -542,7 +547,8 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 1
   webGLLinkerTarget: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    28: AMPLIFY_SHADER_EDITOR
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
@@ -553,14 +559,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Abductor
+  metroPackageName: Abductor_2018.1.0b8-MLTP1_3
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Abductor
+  metroApplicationDescription: Abductor_2018.1.0b8-MLTP1_3
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -629,19 +635,20 @@ PlayerSettings:
   cloudServicesEnabled: {}
   luminIcon:
     m_Name: 
-    m_ModelFolderPath: Assets/Icon/Model
-    m_PortalFolderPath: Assets/Icon/Portal
+    m_ModelFolderPath: 
+    m_PortalFolderPath: 
   luminCert:
     m_CertPath: 
     m_PrivateKeyPath: 
   luminIsChannelApp: 0
   luminVersion:
     m_VersionCode: 1
-    m_VersionName: 
+    m_VersionName: 1
   luminPrivilege:
   - GesturesConfig
   - GesturesSubscribe
   - WorldReconstruction
+  luminMinimumPlatformAPILevel: 3
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 

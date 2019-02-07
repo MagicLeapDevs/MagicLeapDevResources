@@ -111,6 +111,8 @@ public class Spawner : MonoBehaviour {
 
         // Set the state of the prefabs
         _prefabsPopulated = true;
+
+        setSpawnerVisibility(false);
     }
 
     // randomize the spawned cat

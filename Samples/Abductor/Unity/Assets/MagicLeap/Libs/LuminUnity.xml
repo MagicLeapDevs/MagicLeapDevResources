@@ -103,6 +103,117 @@
             </summary>
             <param name="pauseStatus">True if the application is paused, else False. </param>
         </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLAudio">
+            <summary>
+            Manages Audio.
+            </summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLAudio.OnMasterVolumeChanged">
+            <summary>
+            Raised whenever the master volume gets changed.
+            </summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLAudio.OnMicrophoneMuteChanged">
+            <summary>
+            Raised whenever the global microphone mute gets changed.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLAudio.AudioOutputDevice">
+            <summary>
+            The currently active audio output device.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLAudio.MasterVolume">
+            <summary>
+            Returns the master volume for the device.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLAudio.MicrophoneMuted">
+            <summary>
+            Get/Set the microphone muted status.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLAudio.CreateInstance">
+            <summary>
+            static instance of the MLInput class
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLAudio.Start">
+            <summary>
+            Starts the Input API.
+            </summary>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.InvalidParam if input parameter is invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if AudioCaptureMic privilege is denied.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLAudio.StartAPI">
+            <summary>
+            Called by MLAPISingleton to start the API
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLAudio.CleanupAPI(System.Boolean)">
+            <summary>
+            Called by MLAPISingleton on destruction
+            </summary>
+            <param name="isSafeToAccessManagedObjects">
+            </param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLAudio.Update(System.Single,System.IntPtr)">
+            <summary>
+            Called every device frame
+            </summary>
+            <param name="timeDelta">
+            </param>
+            <param name="perceptionSnapshot">
+            </param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLAudio.RegisterOnVolumeChangeCallback">
+            <summary>
+            Registers a callback for the device volume change event.
+            </summary>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.InvalidParam if input parameter is invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if AudioCaptureMic privilege is denied.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLAudio.UnregisterOnVolumeChangeCallback">
+            <summary>
+            Unregisters a previously registered callback for the device volume change event.
+            </summary>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.InvalidParam if input parameter is invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if AudioCaptureMic privilege is denied.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLAudio.RegisterOnMicrophoneMuteCallback">
+            <summary>
+            Registers a callback for the device microphone mute change event.
+            </summary>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.InvalidParam if input parameter is invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if AudioCaptureMic privilege is denied.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLAudio.UnregisterOnMicrophoneMuteCallback">
+            <summary>
+            Unregisters a previously registered callback for the device microphone mute change event.
+            </summary>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.InvalidParam if input parameter is invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if AudioCaptureMic privilege is denied.
+            </returns>
+        </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLCamera">
             <summary>
             MLCamera class exposes static functions to query camera related
@@ -224,7 +335,7 @@
             </summary>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLMediaGenericResult.UnexpectedNull if failed to connect to camera device due to null pointer.
+            MLResult.Code will be MLResultCode.MediaGenericUnexpectedNull if failed to connect to camera device due to null pointer.
             MLResult.Code will be MLResultCode.Timeout if failed to connect to camera device due to timeout.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
@@ -251,9 +362,9 @@
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to internal invalid input parameter.
-            MLResult.Code will be MLMediaGenericResult.UnexpectedNull if failed due to null pointer.
-            MLResult.Code will be MLMediaGenericResult.BadType if failed due to invalid capture type.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if failed due to on-going video recording.
+            MLResult.Code will be MLResultCode.MediaGenericUnexpectedNull if failed due to null pointer.
+            MLResult.Code will be MLResultCode.MediaGenericBadType if failed due to invalid capture type.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if failed due to on-going video recording.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
             MLResult.Code will be MLResultCode.Timeout if failed due to timeout.
@@ -264,13 +375,15 @@
             <summary>
             Initiates a raw image capture request.  Register to OnRawImageAvailable event to get result if format is JPEG.
             OnRawImageAvailableYUV to get result if format is YUV_420_888
+            If this function is invoked before the camera sensor has locked AE and AWB,
+            it will be blocked until AE (Auto Exposure), AWB (Auto Whitebalance) is locked and then starts to capture. The capture itself is asynchronous
             </summary>
             <param name="outputFormat">MLCameraOutputFormat of the output type</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLMediaGenericResult.UnexpectedNull if failed due to null pointer.
-            MLResult.Code will be MLMediaGenericResult.BadType if failed due to invalid capture type.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if failed due to on-going video recording.
+            MLResult.Code will be MLResultCode.MediaGenericUnexpectedNull if failed due to null pointer.
+            MLResult.Code will be MLResultCode.MediaGenericBadType if failed due to invalid capture type.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if failed due to on-going video recording.
             MLResult.Code will be MLResultCode.Timeout if failed due to timeout.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
@@ -285,8 +398,8 @@
             <param name="filePath">Path to write the video.</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLMediaGenericResult.UnexpectedNull if failed due to null pointer.
-            MLResult.Code will be MLMediaGenericResult.BadType if failed to prepare for capture due to invalid capture type.
+            MLResult.Code will be MLResultCode.MediaGenericUnexpectedNull if failed due to null pointer.
+            MLResult.Code will be MLResultCode.MediaGenericBadType if failed to prepare for capture due to invalid capture type.
             MLResult.Code will be MLResultCode.Timeout if failed due to timeout.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
@@ -300,7 +413,7 @@
             </summary>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLMediaGenericResult.UnexpectedNull if failed due to null pointer.
+            MLResult.Code will be MLResultCode.MediaGenericUnexpectedNull if failed due to null pointer.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed to start video recording due to internal error.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             </returns>
@@ -314,8 +427,8 @@
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed to prepare for capture due to invalid input parameter.
-            MLResult.Code will be MLMediaGenericResult.UnexpectedNull if failed to prepare for capture due to null pointer.
-            MLResult.Code will be MLMediaGenericResult.BadType if failed to prepare for capture due to invalid capture type.
+            MLResult.Code will be MLResultCode.MediaGenericUnexpectedNull if failed to prepare for capture due to null pointer.
+            MLResult.Code will be MLResultCode.MediaGenericBadType if failed to prepare for capture due to invalid capture type.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed to prepare for capture due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
@@ -330,8 +443,8 @@
             <param name="filePath">When captureType is of type Video or Image (but not ImageRaw), filePath must be a valid target path for the output capture</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if failed to capture image due to on-going video recording.
-            MLResult.Code will be MLMediaGenericResult.UnexpectedNull if failed to start capture or recording due to null pointer.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if failed to capture image due to on-going video recording.
+            MLResult.Code will be MLResultCode.MediaGenericUnexpectedNull if failed to start capture or recording due to null pointer.
             MLResult.Code will be MLResultCode.InvalidParam if failed to start capture or recording due to invalid input parameter.
             MLResult.Code will be MLResultCode.Timeout if failed to start capture or recording due to timeout.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed to start video recording due to internal error.
@@ -541,7 +654,7 @@
             </summary>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLMediaGenericResult.UnexpectedNull if failed to connect to camera characteristic due to null pointer.
+            MLResult.Code will be MLResultCode.MediaGenericUnexpectedNull if failed to connect to camera characteristic due to null pointer.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
@@ -650,6 +763,418 @@
         <member name="P:UnityEngine.XR.MagicLeap.MLCameraResultSettings.SensorFrameDuration">
             <summary />
         </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsOperationStatus">
+            <summary>
+            Defines possible status values for an operation performed on a MLContactsContact.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsOperationStatus.Success">
+            <summary>
+            Operatin succeeded.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsOperationStatus.Fail">
+            <summary>
+            Operation failed.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsOperationStatus.Duplicate">
+            <summary>
+            MLContactsContact with the details specified for an insert already exists.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsOperationStatus.NotFound">
+            <summary>
+            MLContactsContact to be deleted/updated does not exist.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsSearchField">
+            <summary>
+            Selection bitfield for choosing which fields a search should be executed in
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsSearchField.Name">
+            <summary>
+            Search for name
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsSearchField.Phone">
+            <summary>
+            Search for phone number
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsSearchField.Email">
+            <summary>
+            Search for email address
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsSearchField.All">
+            <summary>
+            Search all fields
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsTaggedAttribute">
+            <summary>
+            Stores a tagged value, such as phone number or email address.
+            Optional tag indicates what type of value is stored, e.g. "home", "work", etc.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsTaggedAttribute.Tag">
+            <summary>
+            Name of the tag
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsTaggedAttribute.Value">
+            <summary>
+            Value of the attribute
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsTaggedAttributeList">
+            <summary>
+            Stores a list of MLContactsTaggedAttributes
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsTaggedAttributeList.Items">
+            <summary>
+            List of tagged attributes
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLContactsTaggedAttributeList.Count">
+            <summary>
+            Number of tagged attributes in the list
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsContact">
+            <summary>
+            Representation of available information for a single contact in address book.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsContact.ID">
+            <summary>
+            Locally-unique contact identifier generated by the system. May change across reboots.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsContact.Name">
+            <summary>
+            Contact's name
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsContact.PhoneNumberList">
+            <summary>
+            List of tagged phone numbers. Tag-value pairs are not required to be unique. Tags are
+            optional(empty strings allowed).
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsContact.EmailAddressList">
+            <summary>
+            List of tagged email addresses. Tag-value pairs are not required to be unique. Tags are
+            optional(empty strings allowed).
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsOperationResult">
+            <summary>
+            Stores the result of an operation performed on a MLContactsContact.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsOperationResult.Status">
+            <summary>
+            The status of the operation
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsOperationResult.Contact">
+            <summary>
+            Resultant contact with updated fields, for e.g., the 'id' of the contact would be available
+            in this resultant contact for AddContact
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsListResult">
+            <summary>
+            Stores the result of a list operation
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListResult.Status">
+            <summary>
+            The status of the operation
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListResult.List">
+            <summary>
+            The list of contacts
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListResult.Offset">
+            <summary>
+            Offset used for the next list to continue after this one
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListResult.TotalHits">
+            <summary>
+            Total number of contacts found for this request
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsContactList">
+            <summary>
+            Used to store a list of contacts
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsContactList.Contacts">
+            <summary>
+            The list of contacts
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLContactsContactList.Count">
+            <summary>
+            Number of contacts in the list
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContacts">
+            <summary>
+            MLContacts provides address book style functionality for storing, editing, deleting and retrieving contacts from on device storage.
+            This API does not expose access to user's connections with other magic leap users (e.g.social graph).
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContacts.DEFAULT_FETCH_LIMIT">
+            <summary>
+            Default limit for retrieval based operations in number of contacts
+            </summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLContacts.OnContactAdded">
+            <summary>
+            Raised when a contact has been successfully added by AddContact.
+            MLContactsOperationResult contains details about the operation and the added contact with an updated ID
+            ulong is a unique identification handle for this operation
+            </summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLContacts.OnContactUpdated">
+            <summary>
+            Raised when a contact has been successfully updated by UpdateContact.
+            MLContactsOperationResult contains details about the operation and the updated contact
+            ulong contains a helpful unique identification handle for this operation
+            </summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLContacts.OnContactDeleted">
+            <summary>
+            Raised when a contact has been successfully deleted by DeleteContact.
+            MLContactsOperationResult contains details about the operation and the deleted contact.
+            ulong is a unique identification handle for this operation
+            </summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLContacts.OnOperationFailed">
+            <summary>
+            Raised when an operation (Add, Update, Delete) failed.
+            MLContactsOperationResult contains details about the operation and the referenced contact with an updated ID
+            ulong is a unique identification handle for this operation
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.CreateInstance">
+            <summary>
+            static instance of the MLContacts class
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.Start">
+            <summary>
+            Starts the Contacts API
+            </summary>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if connected to MLContacts successfully.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if the operation failed with an unspecified error.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.StartAPI">
+            <summary>
+            Start Camera API and set up callbacks.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.CleanupAPI(System.Boolean)">
+            <summary>
+            Cleans up unmanaged memory.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.Update(System.Single,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.AddContact(UnityEngine.XR.MagicLeap.MLContactsContact,System.UInt64@)">
+            <summary>
+            Add a new contact to the address book.
+            Contact must contain a name and at least one email address or phone number and must
+            not be a duplicate or the operation will fail.
+            Contact ID is assigned upon successful completion, any ID specified in the input will be ignored
+            OnContactAdded will be raised if the operation completes successfully
+            OnOperationFailed will be raised if the operation fails to complete
+            </summary>
+            <param name="newContact">The contact to add</param>
+            <param name="requestHandle">Unique identification handle for this operation that can be used as a reference</param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if sucessfully submitted
+            MLResult.Code will be MLResultCode.InvalidParam if either of the parameters are invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.UpdateContact(UnityEngine.XR.MagicLeap.MLContactsContact,System.UInt64@)">
+            <summary>
+            Update an existing contact in the address book.
+            Contacts are matched by ID and updatedContact must contain a valid ID.
+            Contact must contain a name and at least one email address or phone number
+            OnContactUpdated will be raised if the operation completes successfully
+            OnOperationFailed will be raised if the operation fails to complete
+            </summary>
+            <param name="updatedContact">The contact to update, with the updated information</param>
+            <param name="requestHandle">Unique identification handle for this operation that can be used as a reference</param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if sucessfully submitted
+            MLResult.Code will be MLResultCode.InvalidParam if either of the parameters are invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.DeleteContact(UnityEngine.XR.MagicLeap.MLContactsContact,System.UInt64@)">
+            <summary>
+            Delete an existing contact in the address book.
+            Contacts are matched by ID and removedContact must contain a valid ID.
+            OnContactDeleted will be raised if the operation completes successfully
+            OnOperationFailed will be raised if the operation fails to complete
+            </summary>
+            <param name="removedContact">The contact to delete</param>
+            <param name="requestHandle">Unique identification handle for this operation that can be used as a reference</param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if sucessfully submitted
+            MLResult.Code will be MLResultCode.InvalidParam if either of the parameters are invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.CreateListPage(System.UInt32,UnityEngine.XR.MagicLeap.MLResult@,System.Action{UnityEngine.XR.MagicLeap.MLContactsListPage},System.Action{UnityEngine.XR.MagicLeap.MLContactsListPage,UnityEngine.XR.MagicLeap.MLResult})">
+            <summary>
+            Create a new page. Contacts are obtained asynchronously and pageReady will be raised when available.
+            </summary>
+            <param name="pageLength">How many contacts should be in each page.</param>
+            <param name="outResult">out parameter that will contain the MLResult for the request.
+            MLResult.Code will be MLResultCode.Ok if sucessfully created
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if the API has not been started.</param>
+            <param name="pageReady">Raised when the page is collated and ready for viewing.</param>
+            <param name="pageFailed">Raised when the page failed to be retreived.</param>
+            <returns>The created page for searching, null if unable to create the page.</returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.CreateSearchPage(System.String,UnityEngine.XR.MagicLeap.MLContactsSearchField,System.UInt32,UnityEngine.XR.MagicLeap.MLResult@,System.Action{UnityEngine.XR.MagicLeap.MLContactsListPage},System.Action{UnityEngine.XR.MagicLeap.MLContactsListPage,UnityEngine.XR.MagicLeap.MLResult})">
+            <summary>
+            Create a new search page. Contacts are obtained asynchronously and pageReady will be raised when available.
+            </summary>
+            <param name="searchQuery">The string to search for</param>
+            <param name="searchFields">Which field(s) should be searched</param>
+            <param name="pageLength">How many contacts should be in each page.</param>
+            <param name="pageReady">Raised when the page is collated and ready for viewing.</param>
+            <param name="outResult">out parameter that will contain the MLResult for the request.
+            MLResult.Code will be MLResultCode.Ok if sucessfully created
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if the API has not been started.</param>
+            <param name="pageFailed">Raised when the page failed to be retreived.</param>
+            <returns>The created page for searching, null if unable to create the page.</returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContacts.GetResultString(UnityEngine.XR.MagicLeap.MLResultCode)">
+            <summary>
+            Gets a readable version of the result code as an ASCII string.
+            </summary>
+            <param name="result">The MLResult that should be converted.</param>
+            <returns>ASCII string containing a readable version of the result code.</returns>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsListPage">
+            <summary>
+            Helper to step through and manage pages in the MLContacts address book.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsListPage.PageStatus">
+            <summary>
+            Status of a page request.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListPage.PageStatus.Pending">
+            <summary>
+            The page request is still pending.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListPage.PageStatus.Ready">
+            <summary>
+            The page request has succeeded and is ready for viewing.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListPage.PageStatus.Failed">
+            <summary>
+            The page request failed to complete.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListPage.PageStatus.LastPage">
+            <summary>
+            This is the last page available given the initial parameters. NextPage will return to the beginning
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListPage.Status">
+            <summary>
+            Current status of this request.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListPage._requestHandle">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLContactsListPage._unregisterUpdate">
+            <summary />
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLContactsListPage.ContactsList">
+            <summary>
+            The list of contacts in this page... will be null if the page is not ready for viewing
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLContactsListPage.TotalHits">
+            <summary>
+            The total number of contacts that will be available by paging through with the given parameters
+            e.g. If there are 8 total hits with Page length 3, you will be able to call next page 3 times
+            (3 results), (3 results), (2 results), before looping back to the beginning
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContactsListPage.Finalize">
+            <summary>
+            Destroy the page request
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContactsListPage.InternalNewPage(System.UInt32,System.String)">
+            <summary>
+            Request a new page
+            </summary>
+            <param name="pageLength">The length of the page</param>
+            <param name="offset">Offset into the page</param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if sucessfully submitted
+            MLResult.Code will be MLResultCode.InvalidParam if either of the parameters are invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContactsListPage.Update(System.Single,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContactsListPage.NextPage">
+            <summary>
+            Get the next page in the address book, given the initial length.
+            </summary>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if sucessfully submitted
+            MLResult.Code will be MLResultCode.InvalidParam if either of the parameters are invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
+            </returns>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLContactsSearchPage">
+            <summary>
+            Helper to step through and manage pages of a search in the MLContacts address book.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLContactsSearchPage.InternalNewPage(System.UInt32,System.String)">
+            <summary>
+            Request a new page
+            </summary>
+            <param name="pageLength">The length of the page</param>
+            <param name="offset">Offset into the page</param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if sucessfully submitted
+            MLResult.Code will be MLResultCode.InvalidParam if either of the parameters are invalid.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
+            </returns>
+        </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLDispatcher">
             <summary>
             This interface is to let an application query the platform to handle things
@@ -671,7 +1196,7 @@
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an internal invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
-            MLResult.Code will be an MLDispatchResult if a dispatch specific error occurred.
+            MLResult.Code will be MLResultCode.Dispatch* if a dispatch specific error occurred.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLDispatcher.GetResultString(UnityEngine.XR.MagicLeap.MLResultCode)">
@@ -799,16 +1324,6 @@
         <member name="F:UnityEngine.XR.MagicLeap.MLEyes._fixationPoint">
             <summary>
             Fixation point.
-            </summary>
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLEyes._fixationComfortable">
-            <summary>
-            The current state of the fixation comfort.
-            </summary>
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLEyes._fixationViolation">
-            <summary>
-            The current state of the fixation violation.
             </summary>
         </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLEyes.LeftEye">
@@ -1175,11 +1690,19 @@
         <member name="P:UnityEngine.XR.MagicLeap.MLHand.KeyPoseConfidence">
             <summary>
             The confidence value of the requested KeyPose, between [0, 1].
+            This property is marked as unsafe due to the use of unsafe code, in this case, pointers.
+            This is used for accessing the KeyposeConfidence array, which is unsafe in order to prevent
+            marshalling code from allocating the array on the heap and in order to instead allocate it
+            on the stack.
             </summary>
         </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLHand.KeyPoseConfidenceFiltered">
             <summary>
             The filtered confidence value of the requested KeyPose, between [0, 1].
+            This property is marked as unsafe due to the use of unsafe code, in this case, pointers.
+            This is used for accessing the KeyPoseConfidenceFiltered array, which is unsafe in order to
+            prevent marshalling code from allocating the array on the heap and in order to instead
+            allocate it on the stack.
             </summary>
         </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLHand.HandType">
@@ -1232,6 +1755,11 @@
         <member name="P:UnityEngine.XR.MagicLeap.MLHand.HandConfidence">
             <summary>
             The confidence value of the hand, between [0, 1].
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLHand.IsVisible">
+            <summary>
+            The hand is "visible" if the HandConfidence is above 0.8 and the KeyPose is not NoHand.
             </summary>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLHand.GetKeyPoseUp(UnityEngine.XR.MagicLeap.MLHandKeyPose)">
@@ -1299,6 +1827,7 @@
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to other internal error.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLHands.StartAPI">
@@ -1456,7 +1985,7 @@
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
             MLResult.Code will be MLResultCode.PrivilegeDenied if caller does not have the IdentityRead privilege.
-            MLResult.Code will be an MLIdentityResult if an identity specific failure occurred during the operation.
+            MLResult.Code will be MLResultCode.Identity* if an identity specific failure occurred during the operation.
             </param>
             <returns>
             MLResult.Code will be MLResultCode.Pending if successful (request will be pending).
@@ -1464,7 +1993,7 @@
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
             MLResult.Code will be MLResultCode.PrivilegeDenied if caller does not have the IdentityRead privilege.
-            MLResult.Code will be an MLIdentityResult if an identity specific failure occurred during the operation.
+            MLResult.Code will be MLResultCode.Identity* if an identity specific failure occurred during the operation.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLIdentityProfile.Cleanup">
@@ -1646,12 +2175,20 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to internal invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if image tracker was not created due to lack of privilege(s).
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLImageTracker.Start(UnityEngine.XR.MagicLeap.MLImageTrackerSettings)">
             <summary>
-            Start the image tracker.
+            Start the image tracker with the specified settings.
             </summary>
+            <param name="customSettings">The settings to start the image tracker with.</param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.InvalidParam if failed due to internal invalid input parameter.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if image tracker was not created due to lack of privilege(s).
+            </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLImageTracker.StartAPI">
             <summary>
@@ -1709,6 +2246,12 @@
             Set MLImageTrackerSettings
             </summary>
             <param name="customSettings">The new MLImageTrackerSettings wanted.</param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successfully updated the image tracker settings.
+            MLResult.Code will be MLResultCode.InvalidParam if failed to update the settings due to invalid input parameter.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if failed to update the settings due to lack of privilege(s).
+            </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLImageTracker.GetTrackerStatus">
             <summary>
@@ -2297,30 +2840,13 @@
         <member name="M:UnityEngine.XR.MagicLeap.MLLightingTracker.Update(System.Single,System.IntPtr)">
             <summary />
         </member>
-        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceError">
-            <summary>
-            Contains the error type and error code received from the music service
-            </summary>
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceError.ErrorType">
-            <summary>The error type</summary>
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceError.ErrorCode">
-            <summary>
-            For ErrorTypes other than ServiceSpecific, the value of ErrorCode
-            will match the value of ErrorType.
-            When ErrorType is ServiceSpecific, the ErrorCode will be
-            specific to the music streaming service
-            </summary>
-        </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceMetadata">
             <summary>
             Contains the meta data for a track
+            Currently only provides support for ANSI strings
             </summary>
-            \internal
-            TODO: Move to bindings file.
-            \endinternal</member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceMetadata.AlbumTitle">
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceMetadata.TrackTitle">
             <summary />
         </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceMetadata.AlbumInfoName">
@@ -2341,24 +2867,45 @@
         <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceMetadata.Length">
             <summary />
         </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceMetadata.Position">
-            <summary />
-        </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLMusicService">
             <summary>
             Manages MusicService.
             </summary>
-            \internal
-            TODO: Make Singleton
-            \endinternal</member>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLMusicService.OnPlaybackStateChange">
+            <summary> Raised when playback state has changed</summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLMusicService.OnRepeatStateChange">
+            <summary> Raised when repeat state has changed</summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLMusicService.OnShuffleStateChange">
+            <summary> Raisd when shuffle state has changed</summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLMusicService.OnMetadataChange">
+            <summary> Raised when metadata has has changed</summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLMusicService.OnPositionChange">
+            <summary> Raised when playback head position has changed</summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLMusicService.OnError">
+            <summary> Raised when an error has occured</summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLMusicService.OnStatusChange">
+            <summary> Raised when the Music Service status has changed</summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLMusicService.Volume">
+            <summary>
+            Music Volume in range [0.0f ... 1.0f]. This can only be set when a media has been loaded.
+            </summary>
+        </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLMusicService.TrackLength">
             <summary>
-            Current Track Length
+            Current Track Length in milliseconds
             </summary>
         </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLMusicService.CurrentPosition">
             <summary>
-            Current position of playback
+            Current position of playhead in Milliseconds
             </summary>
         </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLMusicService.PlaybackState">
@@ -2376,30 +2923,38 @@
             Current Shuffle State of the music service
             </summary>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.Connect(System.String)">
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.CreateInstance(System.String,System.IntPtr)">
             <summary>
-            Connect to a specified music service provider
+            static instance of the MLMusicService class
             </summary>
-            <param name="name">Name of the music service provider</param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.Start(System.String,System.IntPtr)">
+            <summary>
+            Starts the Music Service API.
+            </summary>
+            <param name="musicServiceProvider">The name of the music service provider</param>
+            <param name="data">Extra user data passed as a void pointer through the callbacks</param>
             <returns>
-            MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
-            MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
+            MLResult.Code will be MLResultCode.Ok if connected to MusicService successfully.
+            MLResult.Code will be MLResultCode.InvalidParam if one of the parameters is invalid.
+            MLResult.Code will be MLResultCode.AllocFailed if connection failed with resource allocation failure
+            MLResult.Code will be MLResultCode.MediaGenericAlreadyExists if connection exists already.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
-            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.AlreadyExists if already connected.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if the operation failed with an unspecified error.
             </returns>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.Disconnect">
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.StartAPI">
             <summary>
-            Disconnects from the currently connected music service provider and clean up
+            Start Camera API and set up callbacks.
             </summary>
-            <returns>
-            MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
-            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
-            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.CleanupAPI(System.Boolean)">
+            <summary>
+            Cleans up unmanaged memory.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.Update(System.Single,System.IntPtr)">
+            <summary />
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.SetAuthString(System.String)">
             <summary>
@@ -2411,7 +2966,7 @@
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not music service is not connected.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.SetURL(System.String)">
@@ -2424,7 +2979,7 @@
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.SetPlayList(System.String[])">
@@ -2436,7 +2991,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.StartPlayback">
@@ -2447,7 +3002,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.StopPlayback">
@@ -2458,7 +3013,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.PausePlayback">
@@ -2469,7 +3024,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.ResumePlayback">
@@ -2480,7 +3035,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.Seek(System.UInt32)">
@@ -2493,7 +3048,7 @@
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.Next">
@@ -2504,7 +3059,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.Previous">
@@ -2515,90 +3070,102 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.SetShuffle(UnityEngine.XR.MagicLeap.MLMusicServiceShuffleState)">
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.GetStatus(UnityEngine.XR.MagicLeap.MLMusicServiceStatus@)">
             <summary>
-            Set shuffle on or off
+            Get the music service status
             </summary>
-            <param name="mode">The shuffle state to set</param>
+            <param name="status">Status from the music service</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
-            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.SetRepeat(UnityEngine.XR.MagicLeap.MLMusicServiceRepeatState)">
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.GetError(UnityEngine.XR.MagicLeap.MLMusicServiceError@)">
             <summary>
-            Set the repeat mode for the music service
+            Get the last music service error
             </summary>
-            <param name="mode">The repeat mode to set</param>
+            <param name="error">Structure to contain the error parameters</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
-            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.SetVolume(System.Single)">
-            <summary>
-            Set the volume for the background music
-            </summary>
-            <param name="volume">Float within the range of 0.0 to 1.0</param>
-            <returns>
-            MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
-            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
-            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if not connected.
-            </returns>
-        </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.GetStatus">
-            <summary>
-            Get the current status of the music service
-            </summary>
-            <returns>MLMusicServiceStatus enum</returns>
-        </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.GetError">
-            <summary>
-            Get the error from the music service
-            </summary>
-            <returns>Error structure with more information about the error</returns>
-        </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.GetMetadata">
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.GetMetadata(UnityEngine.XR.MagicLeap.MLMusicServiceMetadata@)">
             <summary>
             Get the meta data for the current track
             </summary>
-            <returns>Structure containing the requested metadata </returns>
-        </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.RegisterCallbacks(UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks,System.IntPtr@)">
-            <summary>
-            Set a structure containing the desired callbacks. For unwanted callbacks, null can be
-            set. The user must call CleanupCallbacks with the returned IntPtr from this function
-            when the callbacks are no longer desired or the application is cleaning up/exiting.
-            </summary>
-            <param name="callbacks">Structure containing the callback delegate references</param>
-            <param name="callbackPtr">IntPtr allocated for these callbacks</param>
+            <param name="metadata">Structure to contain the meta data</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
-            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.InvalidParam if one of the parameters is invalid.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             </returns>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.CleanupCallbacks(System.IntPtr)">
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.OnPlaybackStateChangeCallback(UnityEngine.XR.MagicLeap.MLMusicServicePlaybackState,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.OnRepeatStateChangeCallback(UnityEngine.XR.MagicLeap.MLMusicServiceRepeatState,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.OnShuffleStateChangeCallback(UnityEngine.XR.MagicLeap.MLMusicServiceShuffleState,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.OnMetadataChangeCallback(MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceMetadata@,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.OnPositionChangeCallback(System.Int32,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.OnErrorCallback(UnityEngine.XR.MagicLeap.MLMusicServiceErrorType,System.Int32,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.OnStatusChangeCallback(UnityEngine.XR.MagicLeap.MLMusicServiceStatus,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.MLMusicServiceSetAuthString(System.String)">
             <summary>
-            Set all callback references to null and cleans up memory allocated to the IntPtr.
-            Must be called if RegisterCallbacks is ever used
+            Sets the authentication string for the MusicService
             </summary>
-            <param name="callbackPtr">The IntPtr returned by RegisterCallbacks</param>
+            <param name="authString">Service provider specific authentication string</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not music service is not connected.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.MLMusicServiceSetURL(System.String)">
+            <summary>
+            Set a single, specific URL to play
+            </summary>
+            <param name="url">The URL to play</param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMusicService.MLMusicServiceSetPlayList(System.String[],System.UInt64)">
+            <summary>
+            Set an array of URLs to use for the playlist
+            </summary>
+            <param name="playlist">The array of URLs</param>
+            <param name="size">The size of the playList array</param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if not connected.
             </returns>
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLScreensScreenInfo">
@@ -2617,6 +3184,14 @@
             Dimensions of the screens' bounding box.
             x, y and z represent
             width, height and depth respectively.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLScreensScreenInfo.Id">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLScreensScreenInfo.Scale">
+            <summary>
+            Scale of the screen in Universe
             </summary>
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLScreensWatchHistoryEntry">
@@ -2700,7 +3275,7 @@
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLScreensResult.ServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLScreens.StartAPI">
@@ -2730,7 +3305,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLScreensResult.ServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLScreens.Add(UnityEngine.XR.MagicLeap.MLScreensWatchHistoryEntry@,UnityEngine.Texture2D)">
@@ -2747,7 +3322,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLScreensResult.ServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLScreens.Remove(System.Int64)">
@@ -2759,7 +3334,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLScreensResult.ServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLScreens.Update(UnityEngine.XR.MagicLeap.MLScreensWatchHistoryEntry@)">
@@ -2771,7 +3346,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLScreensResult.ServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLScreens.Update(UnityEngine.XR.MagicLeap.MLScreensWatchHistoryEntry,UnityEngine.Texture2D)">
@@ -2786,7 +3361,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLScreensResult.ServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLScreens.GetEntry(System.Int64,UnityEngine.XR.MagicLeap.MLScreensWatchHistoryEntry@)">
@@ -2813,7 +3388,7 @@
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLScreensResult.ServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLScreens.GetScreensInfo(System.Collections.Generic.List{UnityEngine.XR.MagicLeap.MLScreensScreenInfo}@)">
@@ -2824,7 +3399,19 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLScreensResult.ServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLScreens.GetScreensInfo(System.UInt64,UnityEngine.XR.MagicLeap.MLScreensScreenInfo@)">
+            <summary>
+            Gets information for all system saved screens.
+            </summary>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLScreens.GetThumbnail(System.Int64,UnityEngine.Texture2D@)">
@@ -2839,7 +3426,7 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLScreensResult.ServiceNotAvailable if failed due to the unavailability of the screens service.
+            MLResult.Code will be MLResultCode.ScreensServiceNotAvailable if failed due to the unavailability of the screens service.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLScreens.GetResultString(UnityEngine.XR.MagicLeap.MLResultCode)">
@@ -3063,7 +3650,7 @@
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
-            MLResult.Code will be an MLTokenAgentResult if a token specific failure occurred during the operation.
+            MLResult.Code will be MLResultCode.TokenAgent* if a token specific failure occurred during the operation.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLTokenAgent.GetClientCredentialsAsync(System.IntPtr@)">
@@ -3084,7 +3671,7 @@
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
-            MLResult.Code will be an MLTokenAgentResult if a token specific failure occurred during the operation.
+            MLResult.Code will be MLResultCode.TokenAgent* if a token specific failure occurred during the operation.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLTokenAgent.GetClientCredentialsWait(UnityEngine.XR.MagicLeap.MLInvokeFuture,System.UInt32,UnityEngine.XR.MagicLeap.MLTokenAgent.MLTokenAgentClientCredentials@)">
@@ -3117,7 +3704,7 @@
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             MLResult.Code will be MLResultCode.AllocFailed if failed to allocate memory.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
-            MLResult.Code will be an MLTokenAgentResult if a token specific failure occurred during the operation.
+            MLResult.Code will be MLResultCode.TokenAgent* if a token specific failure occurred during the operation.
             </returns>
             <remarks>
             Note:
@@ -3209,6 +3796,12 @@
             Include all planes that are semantically tagged.
             </summary>
         </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlanesQueryFlags.Polygons">
+            <summary>
+            If this flag is set, polygons will be returned along with applicable rectangular planes;
+            if it's not set, only rectangular planes will be returned.
+            </summary>
+        </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLWorldPlanesQueryParams">
             <summary>
             Plane Startup Configuration Parameters. Pass these to the Start function
@@ -3276,12 +3869,47 @@
         <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlane.Id">
             <summary />
         </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLWorldPlaneBoundaries">
+            <summary>
+            A Polygonal plane surface.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlaneBoundaries.Id">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlaneBoundaries.Boundaries">
+            <summary />
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLWorldPlaneBoundary">
+            <summary>
+            The plane boundary defined by a single polygon and a collection of any holes found.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlaneBoundary.Polygon">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlaneBoundary.Holes">
+            <summary />
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLWorldPolygon">
+            <summary>
+            The vertices contained within the world polygon.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPolygon.Vertices">
+            <summary />
+        </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLWorldPlanes">
             <summary>
             Creates planes requests and delegates their result.
             </summary>
         </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlanes.Query.Callback">
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlanes.Query.CallbackWithoutBoundaries">
+            <summary>
+            Query result callback.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlanes.Query.CallbackWithBoundaries">
             <summary>
             Query result callback.
             </summary>
@@ -3301,9 +3929,29 @@
             The planes.
             </summary>
         </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlanes.Query.PlaneBoundariesResultsUnmanaged">
+            <summary>
+            The boundaries results unmanaged.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlanes.Query.PlaneBoundaries">
+            <summary>
+            The boundaries
+            </summary>
+        </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLWorldPlanes.Query.Result">
             <summary>
             The result.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLWorldPlanes.Query.CanRequestBoundaries">
+            <summary>
+            If polygon boundaries can be requested.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLWorldPlanes.Query.IsRequestingBoundaries">
+            <summary>
+            If polygon boundaries have been requested.
             </summary>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.Query.Finalize">
@@ -3354,12 +4002,13 @@
             Process pending requests and call the callback specified in the startup config.
             </summary>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.GetQueryResultForHandle(System.UInt64,UnityEngine.XR.MagicLeap.MLWorldPlanes.Query)">
+        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.GetQueryResultForHandle(System.UInt64,UnityEngine.XR.MagicLeap.MLWorldPlanes.Query,System.Collections.Generic.Dictionary{System.UInt64,UnityEngine.XR.MagicLeap.MLWorldPlanes.Query})">
             <summary>
             Execute query.
             </summary>
             <param name="handle">ML internal handle for the pending query.</param>
             <param name="query">Query class for the pending query.</param>
+            <param name="completedQueries">List of completed queries.</param>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.ExtractPlanesFromQueryResults(UnityEngine.XR.MagicLeap.MLWorldPlanes.Query,System.UInt32)">
             <summary>
@@ -3368,7 +4017,7 @@
             <param name="query">Query class for the pending query.</param>
             <param name="numResults">Number of plane results returned.</param>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.ProcessCompletedQueries">
+        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.ProcessCompletedQueries(System.Collections.Generic.Dictionary{System.UInt64,UnityEngine.XR.MagicLeap.MLWorldPlanes.Query})">
             <summary>
             Go through all completed queries and publish their results also clean them up.
             </summary>
@@ -3389,15 +4038,41 @@
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
             </returns>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.GetPlanesInternal(UnityEngine.XR.MagicLeap.MLWorldPlanesQueryParams,System.Action{UnityEngine.XR.MagicLeap.MLResult,UnityEngine.XR.MagicLeap.MLWorldPlane[]})">
+        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.GetPlanes(UnityEngine.XR.MagicLeap.MLWorldPlanesQueryParams,System.Action{UnityEngine.XR.MagicLeap.MLResult,UnityEngine.XR.MagicLeap.MLWorldPlane[],UnityEngine.XR.MagicLeap.MLWorldPlaneBoundaries[]})">
+            <summary>
+            Request real world quad surfaces.
+            Callback will never be called while request is still pending.
+            Only available in Platform API v2 and higher.
+            </summary>
+            <param name="queryParams">All values are required, omitting values may result in unexpected behavior.</param>
+            <param name="callback">
+            Callback used to report query results.
+            Callback MLResult code will never be MLResultCode.Pending.
+            </param>
+            <returns>
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.InvalidParam if failed due to internal invalid input parameter.
+            MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.GetPlanesInternal(UnityEngine.XR.MagicLeap.MLWorldPlanesQueryParams,System.Object)">
             <summary />
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.BeginPlaneQuery(UnityEngine.XR.MagicLeap.MLWorldPlanesQueryParams,System.Action{UnityEngine.XR.MagicLeap.MLResult,UnityEngine.XR.MagicLeap.MLWorldPlane[]})">
+        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.BeginPlaneQuery(UnityEngine.XR.MagicLeap.MLWorldPlanesQueryParams,System.Object)">
             <summary>
             Begin querying for planes.
             </summary>
-            <param name="queryParams">Plane query options.</param>
+            <param name="queryParams">All values are required, omitting values may result in unexpected behavior.</param>
             <param name="callback">Callback used to report query results.</param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLWorldPlanes.IsRequestingBoundaries(MagicLeapInternal.PlanesApiNativeBindings.MLPlanesQueryFlags)">
+            <summary>
+            Determine if the query flags contain a request for polygon boundaries.
+            </summary>
+            <param name="flags">
+            </param>
+            <returns>
+            </returns>
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLWorldRays">
             <summary>
@@ -3516,7 +4191,7 @@
             Polls for the result of pending raycast requests.
             </summary>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLWorldRays.PublishResults">
+        <member name="M:UnityEngine.XR.MagicLeap.MLWorldRays.PublishResults(System.Collections.Generic.Dictionary{System.UInt64,MagicLeapInternal.RaycastApiNativeBindings.MLRaycastResult})">
             <summary>
             Publish results to every pending callback
             </summary>
@@ -3569,6 +4244,33 @@
             server returned by the DRM library.
             </summary>
         </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLMediaPlayer.CustomLicenseHeaderData">
+            <summary>
+            Set custom header key-value pairs to use in addition to default of "User-Agent : Widevine CDM v1.0"
+            when performing key request to the DRM license server.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLMediaPlayer.CustomLicenseMessageData">
+            <summary>
+            Set custom key request key-value pair parameters used when generating default key request.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLMediaPlayer.CustomLicenseRequestBuilder">
+            <summary>
+            Function to generate a licence request body.
+            First parameter is the DRM track being processed, either Video or Audio.
+            Second parameter is the byte[] containing the default generated request.
+            Return is the byte[] which will be used as the body to the license request.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLMediaPlayer.CustomLicenseResponseParser">
+            <summary>
+            Function to parse licence response.
+            First parameter is the DRM track being processed, either Video or Audio.
+            Second parameter is the byte[] containing the response we received from the license server.
+            Return is the byte[] which will be the raw license data, base64 decoding if necessary.
+            </summary>
+        </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLMediaPlayer.OnPlay">
             <summary>
             Callback that is fired when the Media Player begins playback
@@ -3615,6 +4317,12 @@
             Notifies when a video has been prepared and is ready to begin playback
             </summary>
         </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLMediaPlayer.OnMediaError">
+            <summary>
+            Invoked when media player encounters an error. First parameter is the type of error as MLMediaPlayerError
+            second parameter is extra information about the error as MLMediaError
+            </summary>
+        </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLMediaPlayer.OnError">
             <summary>
             Invoked when media player encounters an error. First parameter is the type of error as MLMediaPlayerError
@@ -3625,7 +4333,9 @@
             <summary>
             Invoked when media player has informational events available
             First parameter is the type of information event as MLMediaPlayerInfo
-            Second parameter is any extra info the informational event may define
+            Second parameter is any extra info the informational event may define:
+            When info is MLMediaPlayerInfo.NetworkBandwidth, this holds bandwidth in kbps.
+            It is 0 for others.
             </summary>
         </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLMediaPlayer.MediaPlayerID">
@@ -3656,8 +4366,8 @@
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to an internal error prevented MediaPlayer from starting.
-            MLResult.Code will be MLMediaGenericResult.NoInit if failed due to media player not properly initialized.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if failed due to calling from the wrong state.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if failed due to media player not properly initialized.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if failed due to calling from the wrong state.
             MLResult.Code will be MLResultCode.PrivilegeDenied if attempting to access web content without appropriate network privileges
             </returns>
         </member>
@@ -3698,8 +4408,8 @@
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if failed due to media player not properly initialized.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if failed due to calling from the wrong state.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if failed due to media player not properly initialized.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if failed due to calling from the wrong state.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayer.Pause">
@@ -3709,8 +4419,8 @@
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if failed due to media player not properly initialized.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if failed due to calling from the wrong state.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if failed due to media player not properly initialized.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if failed due to calling from the wrong state.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayer.Stop">
@@ -3720,8 +4430,8 @@
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if failed due to media player not properly initialized.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if failed due to calling from the wrong state.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if failed due to media player not properly initialized.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if failed due to calling from the wrong state.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayer.OnDestroy">
@@ -3734,6 +4444,12 @@
             Pause the media player when the app loses focus
             </summary>
             <param name="isPaused">True when leaving the app, False when re-entering</param>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLMediaPlayerInvalid">
+            <summary>
+            This class is the video player used when no valid video player is available. It implements the IVideoPlayer interface.
+            This version of the media player does not support anything.
+            </summary>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.Initialize(System.Int32,System.Action{System.Object},System.Func{System.Object,UnityEngine.XR.MagicLeap.MLResult},System.Action{System.Object,System.Object},System.Action{System.Object,System.Object,System.Object},System.Action{System.Object,System.Object,System.Object},System.Action{System.Object})">
             <summary>
@@ -3758,7 +4474,7 @@
             MLResult.Code will be MLResultCode.Ok if successful
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if media player was not properly built or initialized.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if media player was not properly built or initialized.
             MLResult.Code will be MLResultCode.PrivilegeDenied if attempting to access web content without appropriate network privileges
             </returns>
         </member>
@@ -3771,8 +4487,8 @@
             MLResult.Code will be MLResultCode.Ok if successful
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if media player was not properly built or initialized.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if method was called from the wrong state.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if media player was not properly built or initialized.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if method was called from the wrong state.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.PauseVideo(System.Int32)">
@@ -3784,8 +4500,8 @@
             MLResult.Code will be MLResultCode.Ok if successful
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if media player was not properly built or initialized.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if method was called from the wrong state.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if media player was not properly built or initialized.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if method was called from the wrong state.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.Seek(System.Int32,System.Int32)">
@@ -3798,8 +4514,8 @@
             MLResult.Code will be MLResultCode.Ok if successful
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if media player was not properly built or initialized.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if method was called from the wrong state.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if media player was not properly built or initialized.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if method was called from the wrong state.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.SetVolume(System.Single,System.Int32)">
@@ -3812,7 +4528,7 @@
             MLResult.Code will be MLResultCode.Ok if successful
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if media player was not properly built or initialized.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if media player was not properly built or initialized.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.Stop(System.Int32)">
@@ -3824,8 +4540,8 @@
             MLResult.Code will be MLResultCode.Ok if successful
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if media player was not properly built or initialized.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if method was called from the wrong state.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if media player was not properly built or initialized.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if method was called from the wrong state.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.Resume(System.Int32)">
@@ -3837,8 +4553,8 @@
             MLResult.Code will be MLResultCode.Ok if successful
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if media player was not properly built or initialized.
-            MLResult.Code will be MLMediaGenericResult.InvalidOperation if method was called from the wrong state.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if media player was not properly built or initialized.
+            MLResult.Code will be MLResultCode.MediaGenericInvalidOperation if method was called from the wrong state.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.SetLooping(System.Boolean,System.Int32)">
@@ -3851,7 +4567,7 @@
             MLResult.Code will be MLResultCode.Ok if successful
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if media player was not properly built or initialized.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if media player was not properly built or initialized.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.Cleanup(System.Int32)">
@@ -3863,7 +4579,7 @@
             MLResult.Code will be MLResultCode.Ok if successful
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to internal error.
-            MLResult.Code will be MLMediaGenericResult.NoInit if media player was not properly built or initialized.
+            MLResult.Code will be MLResultCode.MediaGenericNoInit if media player was not properly built or initialized.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.GetDurationMilliseconds(System.Int32)">
@@ -3899,6 +4615,49 @@
             Sets the license server for DRM videos
             </summary>
             <param name="licenseServer">URL of the License Server</param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.SetCustomLicenseHeaderData(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Set custom header key-value pairs to use in addition to default of "User-Agent : Widevine CDM v1.0"
+            when performing key request to the DRM license server.
+            </summary>
+            <param name="headerData">Dictionary of custom header key-value pairs</param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.SetCustomLicenseMessageData(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Set custom key request key-value pair parameters used when generating default key request.
+            </summary>
+            <param name="messageData">Dictionary of optional key-value pair parameters</param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.SetCustomLicenseRequestBuilder(System.Func{UnityEngine.XR.MagicLeap.MLMediaDRMTrack,System.Byte[],System.Byte[]})">
+            <summary>
+            Sets the custom function to customize the license request.
+            The default implementation, setting this to null, will simply use the default generated request.
+            </summary>
+            <param name="requestBuilder">
+            Function to generate a licence request body.
+            First parameter is the DRM track being processed, either Video or Audio.
+            Second parameter is the byte[] containing the default generated request.
+            Return is the byte[] which will be used as the body to the license request.
+            </param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerLumin.SetCustomLicenseResponseParser(System.Func{UnityEngine.XR.MagicLeap.MLMediaDRMTrack,System.Byte[],System.Byte[]})">
+            <summary>
+            Sets a custom function to custom parse the license response.
+            The default implementation, setting this to null, will treat the entire response as the raw license data.
+            </summary>
+            <param name="responseParser">
+            Function to parse licence response.
+            First parameter is the DRM track being processed, either Video or Audio.
+            Second parameter is the byte[] containing the response we received from the license server.
+            Return is the byte[] which will be the raw license data, base64 decoding if necessary.
+            </param>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLMediaPlayerEditor">
+            <summary>
+            This class is the video player used in Editor. It implements the IVideoPlayer interface.
+            This version of the media player does not support DRM videos.
+            </summary>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerEditor.Initialize(System.Int32,System.Action{System.Object},System.Func{System.Object,UnityEngine.XR.MagicLeap.MLResult},System.Action{System.Object})">
             <summary>
@@ -4037,9 +4796,51 @@
             </summary>
             <param name="licenseServer">(unused) URL of the License Server</param>
         </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerEditor.SetCustomLicenseHeaderData(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Set custom header key-value pairs to use in addition to default of "User-Agent : Widevine CDM v1.0"
+            when performing key request to the DRM license server.
+            </summary>
+            <param name="headerData">(unused) Dictionary of custom header key-value pairs</param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerEditor.SetCustomLicenseMessageData(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Set custom key request key-value pair parameters used when generating default key request.
+            </summary>
+            <param name="messageData">(unused) Dictionary of optional key-value pair parameters</param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerEditor.SetCustomLicenseRequestBuilder(System.Func{UnityEngine.XR.MagicLeap.MLMediaDRMTrack,System.Byte[],System.Byte[]})">
+            <summary>
+            Sets the custom function to customize the license request.
+            The default implementation, setting this to null, will simply use the default generated request.
+            </summary>
+            <param name="requestBuilder">
+            (unused) Function to generate a licence request body.
+            First parameter is the DRM track being processed, either Video or Audio.
+            Second parameter is the byte[] containing the default generated request.
+            Return is the byte[] which will be used as the body to the license request.
+            </param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLMediaPlayerEditor.SetCustomLicenseResponseParser(System.Func{UnityEngine.XR.MagicLeap.MLMediaDRMTrack,System.Byte[],System.Byte[]})">
+            <summary>
+            Sets a custom function to custom parse the license response.
+            The default implementation, setting this to null, will treat the entire response as the raw license data.
+            </summary>
+            <param name="responseParser">
+            (unused) Function to parse licence response.
+            First parameter is the DRM track being processed, either Video or Audio.
+            Second parameter is the byte[] containing the response we received from the license server.
+            Return is the byte[] which will be the raw license data, base64 decoding if necessary.
+            </param>
+        </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLPersistentStore">
             <summary>
             MLPersistentStore implementation.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLPersistentStore.AllBindings">
+            <summary>
+            Getter for all the bindings stored
             </summary>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPersistentStore.CreateInstance">
@@ -4131,7 +4932,7 @@
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPersistentStore.DeleteAll">
             <summary>
-            Deletes all bindings in the store.. Call save after this
+            Deletes all bindings stored.
             </summary>
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLContentBindingType">
@@ -4170,6 +4971,7 @@
         <member name="F:UnityEngine.XR.MagicLeap.MLContentBinding.Offset">
             <summary>
             The offset of the virtual object to the PCF.
+            This is in the Coordinate Space of the PCF.
             </summary>
         </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLContentBinding.OrientationOffset">
@@ -4187,6 +4989,7 @@
         <member name="P:UnityEngine.XR.MagicLeap.MLContentBinding.IsValid">
             <summary>
             Gets a value indicating whether this <see cref="T:UnityEngine.XR.MagicLeap.MLContentBinding" /> is valid.
+            This checks for a valid ObjectId and if the GameObject is set
             </summary>
             <value>
                 <c>true</c> if is valid; otherwise, <c>false</c>.</value>
@@ -4306,7 +5109,10 @@
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLPCF">
             <summary>
-            MLPCF class is an abstraction for representing a
+            MLPCF class is an abstraction for representing anchor points, called Persistent
+            Coordinate Frames or PCFs, in the real world. PCFs cannot be created, modified or
+            destroyed from the app level. Rather, we query the OS for any PCFs it has stored
+            and query again to determine the PCF location, if it is within the vicinity.
             </summary>
         </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLPCF.CFUID">
@@ -4337,15 +5143,34 @@
             OnUpdate event gets fired when the position, orientation of the PCF changes.
             </summary>
         </member>
-        <member name="P:UnityEngine.XR.MagicLeap.MLPCF.GameObj">
+        <member name="E:UnityEngine.XR.MagicLeap.MLPCF.OnLost">
             <summary>
-            GameObject representing the PCF
+            OnLost is triggered when the CurrentResult changes MLResultCode.Ok to something other
+            than MLResultCode.Ok. This indicates that the PCF is no longer available in the current map.
             </summary>
-            <value>The game object.</value>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLPCF.OnRegain">
+            <summary>
+            OnRegain is triggered when the CurrentResult changes from something other than MLResultCode.Ok
+            to MLResultCode.Ok. This indicates that the PCF was found again after it was lost.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLPCF.Position">
+            <summary>
+            Position of the MLPCF for the current session
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLPCF.Orientation">
+            <summary>
+            Orientation of the MLPCF for the current session
+            </summary>
         </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLPCF.CurrentResult">
             <summary>
-            Gets or sets the current result.
+            Gets or sets the current result. It could be one of the following:
+            MLResultCode.Pending - Position/Orientation does not exist
+            MLResultCode.Ok - Position/Orientation is reliable
+            Otherwise - Position/Orientation is unreliable
             </summary>
             <value>The current result.</value>
         </member>
@@ -4358,7 +5183,40 @@
         <member name="T:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames">
             <summary>
             MLPersistentCoordinateFrames class contains the API to interface with the
-            Persistent Coordinate Frame CAPI.
+            Persistent Coordinate Frame C API.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.DelayBetweenAllPCFsQueryInSeconds">
+            <summary>
+            Delay between querying for all PCFs. Used by GetAllPCFs(...)
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.StartTimeOutInSeconds">
+            <summary>
+            Initialization timeout in seconds. Countdown begins when calling Start()
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames._pcfMap">
+            <summary>
+            Map of PCFs that we're currently tracking. A PCF is only tracked when it's added via QueueForUpdates().
+            </summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.OnReady">
+            <summary>
+            event for notifying if the system is ready for query
+            </summary>
+        </member>
+        <member name="E:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.OnInitialized">
+            <summary>
+            Event for notifying if the system is ready. Event Handlers are expected to stop listening immediately after the event is triggered.
+            The parameter could be one of the following:
+            MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.Timeout if it failed to become ready after StartTimeOutInSeconds.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.IsReady">
+            <summary>
+            variable for polling if the system is ready
             </summary>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.Start">
@@ -4369,8 +5227,8 @@
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to other internal error.
-            MLResult.Code will be MLPassableWorldResult.LowMapQuality if map quality is too low for content persistence. Continue building the map.
-            MLResult.Code will be MLPassableWorldResult.UnableToLocalize if currently unable to localize into any map. Continue building the map.
+            MLResult.Code will be MLResultCode.PassableWorldLowMapQuality if map quality is too low for content persistence. Continue building the map.
+            MLResult.Code will be MLResultCode.PassableWorldUnableToLocalize if currently unable to localize into any map. Continue building the map.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.StartAPI">
@@ -4386,46 +5244,67 @@
         <member name="M:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.Update(System.Single,System.IntPtr)">
             <summary />
         </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.UpdatePCFTransforms(System.IntPtr)">
+            <summary>
+            Update Transforms of PCFs that we're tracking
+            </summary>
+            <param name="perceptionSnapshot">MLSnapshot</param>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.QueueForUpdates(UnityEngine.XR.MagicLeap.MLPCF)">
+            <summary>
+            Adds the given PCF to the list of PCFs that are updated every frame
+            </summary>
+            <param name="pcf">PCF to be updated</param>
+        </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.FindClosestPCF(UnityEngine.Vector3,System.Action{UnityEngine.XR.MagicLeap.MLResult,UnityEngine.XR.MagicLeap.MLPCF})">
             <summary>
-            Retireve closest known PCF to the given position.
+            Retrieve closest known PCF to the given position and query for the position of the PCF.
             </summary>
             <param name="position">The position of the object we want to anchor</param>
             <param name="callback">The method called when the closest PCF is found</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
+            MLResult.Code will be MLResultCode.Pending if the PCF system isn't fully initialized. Poll the IsReady or listen to OnReady event
+            to know if the system is ready.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to other internal error.
-            MLResult.Code will be MLPassableWorldResult.LowMapQuality if map quality is too low for content persistence. Continue building the map.
-            MLResult.Code will be MLPassableWorldResult.UnableToLocalize if currently unable to localize into any map. Continue building the map.
+            MLResult.Code will be MLResultCode.PassableWorldLowMapQuality if map quality is too low for content persistence. Continue building the map.
+            MLResult.Code will be MLResultCode.PassableWorldUnableToLocalize if currently unable to localize into any map. Continue building the map.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.GetPCFPosition(UnityEngine.XR.MagicLeap.MLPCF,System.Action{UnityEngine.XR.MagicLeap.MLResult,UnityEngine.XR.MagicLeap.MLPCF})">
             <summary>
             Gets the PCF position from the transform.
             </summary>
-            <param name="pcf">Pcf. Should be valid. </param>
-            <param name="callback">Callback. Called with the result when the return value of the function is MLResult.IsOk</param>
+            <param name="pcf">MLPCF with a valid CFUID</param>
+            <param name="callback">Called with the result when the return value of the function is MLResult.IsOk</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
             MLResult.Code will be MLResultCode.InvalidParam if failed due to an invalid input parameter.
+            MLResult.Code will be MLResultCode.Pending if the PCF system isn't fully initialized. Poll the IsReady or listen to OnReady event
+            to know if the system is ready.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to other internal error.
-            MLResult.Code will be MLSnapshotResult.PoseNotFound if Coordinate Frame is valid, but not found in the current pose snapshot.
+            MLResult.Code will be MLResultCode.SnapshotPoseNotFound if Coordinate Frame is valid, but not found in the current pose snapshot.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.GetAllPCFs(System.Collections.Generic.List{UnityEngine.XR.MagicLeap.MLPCF}@,System.Int32)">
             <summary>
-            Gets all PCF.
+            Returns a list of all the PCFs stored in the device. However, only PCFs in the current
+            Landscape can be located. Call GetPCFPosition() on each PCF to determine their location.
+            Note: It is ill-advised to call this function often with DelayBetweenAllPCFsQuery set
+            to near zero because the underlying mechanism is expensive.
             </summary>
             <param name="pcfList">Pcf list.</param>
             <param name="maxResults">Max results.</param>
             <returns>
             MLResult.Code will be MLResultCode.Ok if successful.
+            MLResult.Code will be MLResultCode.Pending if the PCF system isn't fully initialized. Poll the IsReady or listen to OnReady event
+            to know if the system is ready.
             MLResult.Code will be MLResultCode.PrivilegeDenied if necessary privilege is missing.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if failed due to other internal error.
-            MLResult.Code will be MLPassableWorldResult.LowMapQuality if map quality is too low for content persistence. Continue building the map.
-            MLResult.Code will be MLPassableWorldResult.UnableToLocalize if currently unable to localize into any map. Continue building the map.
+            MLResult.Code will be MLResultCode.PassableWorldLowMapQuality if map quality is too low for content persistence. Continue building the map.
+            MLResult.Code will be MLResultCode.PassableWorldUnableToLocalize if currently unable to localize into any map. Continue building the map.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPersistentCoordinateFrames.GetResultString(UnityEngine.XR.MagicLeap.MLResultCode)">
@@ -4434,6 +5313,39 @@
             </summary>
             <param name="result">The MLResult that should be converted.</param>
             <returns>ASCII string containing a readable version of the result code.</returns>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLVerbosity">
+            <summary>
+            Class to handle verbosity of MLPlugin logs.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLVerbosity.Levels">
+            <summary>
+            Different levels of verbosity. Modify this to change the verbosity of the Magic Leap APIs.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLVerbosity.Levels.Silent">
+            <summary>
+            Don't print any MLPlugin logs.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLVerbosity.Levels.ErrorsOnly">
+            <summary>
+            Print only MLPlugin error logs.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLVerbosity.Levels.WarningsAndErrors">
+            <summary>
+            Print MLPlugin error and warning logs.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLVerbosity.Levels.Verbose">
+            <summary>
+            Print all MLPlugin logs.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLVerbosity.Level">
+            <summary />
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLImageTrackerBehavior">
             <summary>
@@ -4485,6 +5397,16 @@
             tracking status.
             </summary>
         </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLImageTrackerBehavior.IsTracking">
+            <summary>
+            Whether or not this object is currently being tracked
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.MagicLeap.MLImageTrackerBehavior.TrackingStatus">
+            <summary>
+            The current status of the tracking state
+            </summary>
+        </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLImageTrackerBehavior.Awake">
             <summary>
             Start the image tracker and the image target to the tracking system.
@@ -4511,6 +5433,34 @@
             </summary>
             <param name="longerDimension">longer dimension of the image target in scene units.</param>
             <returns />
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLAudioOutputDevice">
+            <summary>
+            The currently active output device.
+            </summary>
+        </member>
+        <member name="T:MagicLeapInternal.AudioNativeBindings">
+            <summary>
+            See ml_audio.h for additional comments.
+            </summary>
+        </member>
+        <member name="M:MagicLeapInternal.AudioNativeBindings.MLAudioGetOutputDevice(UnityEngine.XR.MagicLeap.MLAudioOutputDevice@)">
+            <summary />
+        </member>
+        <member name="M:MagicLeapInternal.AudioNativeBindings.MLAudioGetMasterVolume(System.Single@)">
+            <summary />
+        </member>
+        <member name="M:MagicLeapInternal.AudioNativeBindings.MLAudioSetMicMute(System.Boolean)">
+            <summary />
+        </member>
+        <member name="M:MagicLeapInternal.AudioNativeBindings.MLAudioIsMicMuted(System.Boolean@)">
+            <summary />
+        </member>
+        <member name="M:MagicLeapInternal.AudioNativeBindings.MLAudioSetMasterVolumeCallback(MagicLeapInternal.AudioNativeBindings.MLAudioMasterVolumeChangedCallback,System.IntPtr)">
+            <summary />
+        </member>
+        <member name="M:MagicLeapInternal.AudioNativeBindings.MLAudioSetMicMuteCallback(MagicLeapInternal.AudioNativeBindings.MLAudioMicMuteCallback,System.IntPtr)">
+            <summary />
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLCameraError">
             <summary>
@@ -4850,6 +5800,16 @@
         </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLCameraScalerCropRegion.Bottom">
             <summary />
+        </member>
+        <member name="T:MagicLeapInternal.ContactsApiNativeBindings">
+            <summary>
+            See ml_contacts.h for additional comments.
+            </summary>
+        </member>
+        <member name="F:MagicLeapInternal.ContactsApiNativeBindings.MLContactsDLL">
+            <summary>
+            MLContacts library name
+            </summary>
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLDispatchResult">
             <summary>
@@ -5511,6 +6471,63 @@
         <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerState.HardwareIndex">
             <summary />
         </member>
+        <member name="T:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.Orientation">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.Position">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.TouchPosAndForce1">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.TouchPosAndForce2">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.TriggerNormalized">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.ButtonStateNone">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.ButtonStateMove">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.ButtonStateApp">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.ButtonStateBumper">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.ButtonStateHomeTap">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.IsTouchActive1">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.IsTouchActive2">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.IsConnected">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.TouchpadGesture">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.TouchpadGestureState">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.Type">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.Dof">
+            <summary />
+        </member>
+        <member name="F:MagicLeapInternal.InputNativeBindings.MLInputControllerStateInternal.HardwareIndex">
+            <summary />
+        </member>
         <member name="T:MagicLeapInternal.InputNativeBindings.MLInputConfiguration">
             <summary />
         </member>
@@ -5601,9 +6618,6 @@
             Identifier of Magic Leap API results
             </summary>
         </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.Prefix">
-            <summary />
-        </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.Ok">
             <summary />
         </member>
@@ -5628,7 +6642,376 @@
         <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PrivilegeDenied">
             <summary />
         </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.NotImplemented">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.NotCompatible">
+            <summary />
+        </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.Last">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaPlayerServerDied">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaPlayerNotValidForProgressivePlayback">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaNotConnected">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaUnknownHost">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaCannotConnect">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaIO">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaConnectionLost">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaLegacy1">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaMalformed">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaOutOfRange">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaBufferTooSmall">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaUnsupported">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaEndOfStream">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaFormatChanged">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDiscontinuity">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaOutputBuffersChanged">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaPermissionRevoked">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaUnsupportedAudioFormat">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaHeartbeatTerminateRequested">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMUnknown">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMNoLicense">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMLicenseExpired">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMSessionNotOpened">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMDecryptUnitNotInitialized">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMDecrypt">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMCannotHandle">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMTamperDetect">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMNotProvisioned">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMDeviceRevoked">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMResourceBusy">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMInsufficientOutputProtection">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMLastUsedErrorCode">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMVendorMin">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaDRMVendorMax">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericInvalidOperation">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericBadType">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericNameNotFound">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericHandleNotFound">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericNoInit">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericAlreadyExists">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericDeadObject">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericFailedTransaction">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericBadIndex">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericNotEnoughData">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericWouldBlock">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericUnknownTransaction">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericFDSNotAllowed">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.MediaGenericUnexpectedNull">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.DispatchCannotStartApp">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.DispatchInvalidPacket">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.DispatchNoAppFound">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.DispatchAppPickerDialogFailure">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityFailedToConnectToLocalService">
+            <summary>
+            The local service is not running, or it cannot be accessed.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityFailedToConnectToCloudService">
+            <summary>
+            The service failed to access the cloud service.
+            Either there is no IP connection or the cloud service is not available.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityCloudAuthentication">
+            <summary>
+            The user does not have the required privileges to use the requesting service
+            or the refresh token used by the service is invalid.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityInvalidInformationFromCloud">
+            <summary>
+            Signature verification failed on the information returned by the cloud or a
+            parsing error occurred.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityNotLoggedIn">
+            <summary>
+            The operation failed because the user is not logged in to the cloud.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityExpiredCredentials">
+            <summary>
+            The user's credentials have expired.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityFailedToGetUserProfile">
+            <summary>
+            Failed to retrieve attributes of the user's profile.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityUnauthorized">
+            <summary>
+            The cloud rejected the operation because the user is not authorized to execute it.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityCertificateError">
+            <summary>
+            The device failed to authenticate the server.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityRejectedByCloud">
+            <summary>
+            The cloud rejected the operation.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityAlreadyLoggedIn">
+            <summary>
+            The user is already logged in.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityModifyIsNotSupported">
+            <summary>
+            The cloud does not support modification of an attribute value.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.IdentityNetworkError">
+            <summary>
+            The device is not connected to a network.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PassableWorldLowMapQuality">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PassableWorldUnableToLocalize">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PassableWorldServerUnavailable">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.ScreensServiceNotAvailable">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentFailedToConnectToLocalService">
+            <summary>
+            The local binder service was not found.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentServiceNotStarted">
+            <summary>
+            The local binder service is running but has not been registered by the login service.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentFailedToConnectToCloud">
+            <summary>
+            The local binder service failed to connect to the cloud service.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentCloudAuthentication">
+            <summary>
+            The cloud service rejected the request due to inappropriate credentials.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentFailedToLogin">
+            <summary>
+            The local server failed to log in with the cloud.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentLoginNotBegun">
+            <summary>
+            An attempt to complete the login was begun without starting the login.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentNotLoggedIn">
+            <summary>
+            The operation was rejected because the local server was not logged in with the cloud.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentAlreadyLoggedIn">
+            <summary>
+            The login request failed because the local server is already logged in with the cloud.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentLoginInProgress">
+            <summary>
+            The login request request failed because a login is already in progress.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentFailedToStartIdentityService">
+            <summary>
+            Having completed the login process with the cloud successfully, the service failed to
+            start the local identity service.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentDeviceNotRegistered">
+            <summary>
+            The serial number of the device is not recognized by the cloud so login failed.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.TokenAgentDeviceNotConnected">
+            <summary>
+            The device is not yet connected to the cloud so login failed.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.SnapshotPoseNotFound">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PurchaseUserCancelled">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PurchaseItemAlreadyPurchased">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PurchasePaymentSourceError">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PurchaseInvalidPurchaseToken">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PurchaseItemUnavailable">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PurchaseNoDefaultPayment">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.CloudNotFound">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.CloudServerError">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.CloudNetworkError">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.CloudSystemError">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.CloudInvalidHandle">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.CloudBadHandleState">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PrivilegeGranted">
+            <summary>
+            Used for MLPrivileges check and request privilege
+            functions. Indicates if the user has decided to
+            grant the privilege to the application.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.PrivilegeNotGranted">
+            <summary>
+            Used for MLPrivileges check and request privilege
+            functions. Indicates whether a privilege has not
+            yet been requested or if the user has decided not
+            to grant the privilege to the application.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.ContactsHandleNotFound">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.ContactsCompleted">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.ContactsCancelled">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLResultCode.ContactsIllegalState">
             <summary />
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLSnapshotResult">
@@ -5670,14 +7053,13 @@
             <summary>
             Gets a value indicating whether the result code is MLResultCode.Ok
             Note that in some cases the result can be different than MLResultCode.Ok
-            and still valid (e.g. MLResultCode.Pending, MLPrivilegesResult.Granted)
+            and still valid (e.g. MLResultCode.Pending, MLResultCode.PrivilegeGranted)
             </summary>
         </member>
         <member name="P:UnityEngine.XR.MagicLeap.MLResult.IsCustom">
             <summary>
             Gets a value indicating if the result code should be cast to a
             feature specific result.
-            e.g. (MLPurchaseResult)result.Code
             </summary>
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLSnapshot">
@@ -5939,7 +7321,7 @@
         <member name="F:UnityEngine.XR.MagicLeap.MLMusicServicePlaybackState.Paused">
             <summary />
         </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServicePlaybackState.Stop">
+        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServicePlaybackState.Stopped">
             <summary />
         </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLMusicServicePlaybackState.Error">
@@ -5953,7 +7335,7 @@
             MusicService repeat setting
             </summary>
         </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceRepeatState.None">
+        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceRepeatState.Off">
             <summary />
         </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceRepeatState.Song">
@@ -5979,50 +7361,21 @@
         <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceShuffleState.Unknown">
             <summary />
         </member>
-        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks">
-            <summary />
+        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceError">
+            <summary>
+            Contains the error type and error code received from the music service
+            </summary>
         </member>
-        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnPlaybackStateChangeCallback">
-            <summary />
+        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceError.ErrorType">
+            <summary>The error type</summary>
         </member>
-        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnRepeatStateChangeCallback">
-            <summary />
-        </member>
-        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnShuffleStateChangeCallback">
-            <summary />
-        </member>
-        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnMetadataChangeCallback">
-            <summary />
-        </member>
-        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnPositionChangeCallback">
-            <summary />
-        </member>
-        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnErrorCallback">
-            <summary />
-        </member>
-        <member name="T:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnStatusChangeCallback">
-            <summary />
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnPlaybackStateChange">
-            <summary />
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnRepeatStateChange">
-            <summary />
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnShuffleStateChange">
-            <summary />
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnMetadataChange">
-            <summary />
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnPositionChange">
-            <summary />
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnError">
-            <summary />
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceCallbacks.OnStatusChange">
-            <summary />
+        <member name="F:UnityEngine.XR.MagicLeap.MLMusicServiceError.ErrorCode">
+            <summary>
+            For ErrorTypes other than ServiceSpecific, the value of ErrorCode
+            will match the value of ErrorType.
+            When ErrorType is ServiceSpecific, the ErrorCode will be
+            specific to the music streaming service
+            </summary>
         </member>
         <member name="T:MagicLeapInternal.MusicServiceNativeBindings">
             <summary>
@@ -6040,7 +7393,7 @@
         <member name="M:MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceDisconnect">
             <summary />
         </member>
-        <member name="M:MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceSetCallbacks(System.IntPtr)">
+        <member name="M:MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceSetCallbacks(System.IntPtr,System.IntPtr)">
             <summary />
         </member>
         <member name="M:MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceSetAuthString(System.String)">
@@ -6103,10 +7456,10 @@
         <member name="M:MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceGetShuffleState(UnityEngine.XR.MagicLeap.MLMusicServiceShuffleState@)">
             <summary />
         </member>
-        <member name="M:MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceGetMetadata(UnityEngine.XR.MagicLeap.MLMusicServiceMetadata@)">
+        <member name="M:MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceGetMetadata(MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceMetadata@)">
             <summary />
         </member>
-        <member name="M:MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceReleaseMetadata(UnityEngine.XR.MagicLeap.MLMusicServiceMetadata@)">
+        <member name="M:MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceReleaseMetadata(MagicLeapInternal.MusicServiceNativeBindings.MLMusicServiceMetadata@)">
             <summary />
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLPassableWorldResult">
@@ -6270,9 +7623,50 @@
             Full 6 degrees of freedom tracking (position and orientation).
             </summary>
         </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLHeadTrackingMode.ModeUnavailable">
+            <summary>
+            Head tracking is unavailable.
+            </summary>
+        </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLHeadTrackingMode.Mode3DOF">
             <summary>
             Limited 3 degrees of freedom tracking (orientation only).
+            </summary>
+            <deprecated>
+            Use MLHeadTrackingMode.ModeUnavailable instead.
+            </deprecated>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MLHeadTrackingMapEvent">
+            <summary>
+            A set of all types of map events that can occur that a developer
+            may have to handle.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLHeadTrackingMapEvent.Lost">
+            <summary>
+            Map was lost. It could possibly recover.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLHeadTrackingMapEvent.Recovered">
+            <summary>
+            Previous map was recovered.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLHeadTrackingMapEvent.RecoveryFailed">
+            <summary>
+            Failed to recover previous map.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLHeadTrackingMapEvent.NewSession">
+            <summary>
+            New map session created.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.MagicLeap.MapEventsExtension">
+            <summary>
+            A class to provide an extension for the MLHeadTrackingMapEvent enum.
+            Provides an alternative to binary operator use in order to find if a
+            specific event has occured given a MLHeadTrackingMapEvent bitmask.
             </summary>
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLHeadTrackingState">
@@ -6593,6 +7987,18 @@
             Unregisters a previously registered head tracking mode change callback.
             </summary>
         </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MagicLeapDevice.RegisterOnHeadTrackingMapEvent(System.Action{UnityEngine.XR.MagicLeap.MLHeadTrackingMapEvent})">
+            <summary>
+            Registers a callback to be called when map events occur.
+            This functionality is only supported on platform api level 2 and onwards.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.MagicLeap.MagicLeapDevice.UnregisterOnHeadTrackingMapEvent(System.Action{UnityEngine.XR.MagicLeap.MLHeadTrackingMapEvent})">
+            <summary>
+            Unregisters a previously registered map event callback.
+            This functionality is only supported on platform api level 2 and onwards.
+            </summary>
+        </member>
         <member name="M:UnityEngine.XR.MagicLeap.MagicLeapDevice.UpdateWorldScale">
             <summary>
             Apply the world scale set on the current main camera's parent.
@@ -6790,6 +8196,18 @@
         <member name="F:UnityEngine.XR.MagicLeap.MLPrivilegeId.Invalid">
             <summary />
         </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLPrivilegeId.AddressBookRead">
+            <summary>
+            Full read and search access to address book contacts.
+            Type: Sensitive
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLPrivilegeId.AddressBookWrite">
+            <summary>
+            Ability to add, modify and delete address book contacts.
+            Type: Sensitive
+            </summary>
+        </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLPrivilegeId.AudioRecognizer">
             <summary>
             Open a microphone stream for voice recognition.
@@ -6834,7 +8252,7 @@
         </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLPrivilegeId.Occlusion">
             <summary>
-            TODO: Remove This!.
+            Deprecated and scheduled for removal.
             Type: AutoGranted
             </summary>
         </member>
@@ -6944,13 +8362,11 @@
             <summary>
             Privilege ids that need to be requested at runtime in addition
             to being specified in the app manifest. Descriptions for each
-            value can be found in MLPrivilegeId enum.
+            value can be found in MLPrivilegeId enum. This is the subset of
+            runtime privileges applicable to Unity apps.
             </summary>
         </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLRuntimeRequestPrivilegeId.AudioCaptureMic">
-            <summary />
-        </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLRuntimeRequestPrivilegeId.AudioRecognizer">
             <summary />
         </member>
         <member name="F:UnityEngine.XR.MagicLeap.MLRuntimeRequestPrivilegeId.CameraCapture">
@@ -6962,7 +8378,10 @@
         <member name="F:UnityEngine.XR.MagicLeap.MLRuntimeRequestPrivilegeId.PwFoundObjRead">
             <summary />
         </member>
-        <member name="F:UnityEngine.XR.MagicLeap.MLRuntimeRequestPrivilegeId.VoiceInput">
+        <member name="F:UnityEngine.XR.MagicLeap.MLRuntimeRequestPrivilegeId.AddressBookRead">
+            <summary />
+        </member>
+        <member name="F:UnityEngine.XR.MagicLeap.MLRuntimeRequestPrivilegeId.AddressBookWrite">
             <summary />
         </member>
         <member name="T:UnityEngine.XR.MagicLeap.MLPrivileges">
@@ -7034,8 +8453,8 @@
             This does not solicit consent from the end-user.
             </summary>
             <returns>
-            MLResult.Code will be MLPrivilegesResult.Granted if the privilege is granted.
-            MLResult.Code will be MLPrivilegesResult.Denied if the privilege is denied.
+            MLResult.Code will be MLResultCode.PrivilegeGranted if the privilege is granted.
+            MLResult.Code will be MLResultCode.PrivilegeNotGranted if the privilege is denied or has not yet been requested.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if the privilege system was not started.
             </returns>
         </member>
@@ -7045,22 +8464,23 @@
             from the end-user.
             </summary>
             <returns>
-            MLResult.Code will be MLPrivilegesResult.Granted if the privilege is granted.
-            MLResult.Code will be MLPrivilegesResult.Denied if the privilege is denied.
+            MLResult.Code will be MLResultCode.PrivilegeGranted if the privilege is granted.
+            MLResult.Code will be MLResultCode.PrivilegeNotGranted if the privilege is denied.
             MLResult.Code will be MLResultCode.UnspecifiedFailure if the privilege system was not started.
             </returns>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPrivileges.RequestPrivilegeAsync(UnityEngine.XR.MagicLeap.MLPrivilegeId,System.Action{UnityEngine.XR.MagicLeap.MLResult,UnityEngine.XR.MagicLeap.MLPrivilegeId})">
             <summary>
             Request the specified privileges. This may solicit consent from the end-user.
+            Note: The asynchronous callback occurs within the main thread.
             </summary>
             <param name="privilegeId">
             </param>
             <param name="callback">
             Callback to be executed when the privilege request has completed.
             The MLResult.Code returned could be one of the following:
-            - MLPrivilegesResult.Granted if the privilege is granted.
-            - MLPrivilegesResult.Denied if the privilege is denied.
+            - MLResultCode.PrivilegeGranted if the privilege is granted.
+            - MLResultCode.PrivilegeNotGranted if the privilege is denied.
             - MLResultCode.UnspecifiedFailure if the privilege system was not started.
             </param>
             <returns>
@@ -7074,15 +8494,15 @@
             Process pending requests and call the callback specified in the startup config.
             </summary>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLPrivileges.ProcessCompletedQueries">
+        <member name="M:UnityEngine.XR.MagicLeap.MLPrivileges.ProcessCompletedQueries(System.Collections.Generic.List{UnityEngine.XR.MagicLeap.MLPrivileges.RequestPrivilegeQuery})">
             <summary>
             Go through all completed queries and publish their results also clean them up.
             </summary>
         </member>
-        <member name="M:UnityEngine.XR.MagicLeap.MLPrivileges.RequestPrivilegeStatus(UnityEngine.XR.MagicLeap.MLPrivilegeId)">
+        <member name="M:UnityEngine.XR.MagicLeap.MLPrivileges.RequestPrivilegeStatus(UnityEngine.XR.MagicLeap.MLPrivilegeId,System.Collections.Generic.List{UnityEngine.XR.MagicLeap.MLPrivileges.RequestPrivilegeQuery})">
             <summary>
             Try to get the result from a privilege request. The request object is internally freed when
-            the result is ready (i.e. retval is either MLPrivilegesResult.Granted or MLPrivilegesResult.Denied).
+            the result is ready (i.e. retval is either MLResultCode.PrivilegeGranted or MLResultCode.PrivilegeNotGranted).
             </summary>
         </member>
         <member name="M:UnityEngine.XR.MagicLeap.MLPrivileges.GetResultString(UnityEngine.XR.MagicLeap.MLResultCode)">
