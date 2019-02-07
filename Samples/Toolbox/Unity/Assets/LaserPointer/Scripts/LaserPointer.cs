@@ -144,20 +144,5 @@ public class LaserPointer : MonoBehaviour {
         }
     }
     #endregion
-
-    # region Public Methods
-    public void nextScene() {
-        GameObject appManager = GameObject.Find("AppManager");
-        if (appManager != null) {
-            AppManager appManagerScript = appManager.GetComponentInChildren<AppManager>();
-            appManagerScript.nextScene(); 
-        }
-    }
-
-    public void legalScreen() {
-        string url = "http://www.magicleap.com/legal/privacy";
-        MLDispatcher.TryOpenAppropriateApplication(url);
-    }
-    #endregion
 }
 

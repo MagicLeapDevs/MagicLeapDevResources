@@ -11,6 +11,7 @@
 // %BANNER_END%
 
 using UnityEngine;
+using UnityEditor;
 using UnityEditor.Lumin;
 using System;
 using System.IO;
@@ -29,6 +30,7 @@ namespace UnityEditor.Experimental.XR.MagicLeap
         private SDK _sdk;
         private string _musicExampleMabuPath;
         private string _projectRoot;
+
         [MenuItem("Magic Leap/Setup Music Service Example")]
         public static void BuildMusicPlayerExample()
         {
@@ -40,34 +42,49 @@ namespace UnityEditor.Experimental.XR.MagicLeap
             _instance._sdk = SDK.Find(true);
             _instance._musicExampleMabuPath = Path.Combine(Application.dataPath, Path.Combine("MagicLeap", "BackgroundMusicExample"));
             _instance._projectRoot = Path.Combine(Application.dataPath, @"../");
+
+            EditorUtility.DisplayProgressBar("Setting up Music Service Example", "Building Background Music Service Provider", 0.2f);
             if (!_instance.BuildProvider())
             {
+                EditorUtility.ClearProgressBar();
                 return;
             }
+
+            EditorUtility.DisplayProgressBar("Setting up Music Service Example", "Creating Custom Manifest", 0.4f);
 
             if (!_instance.MoveCustomManifest())
             {
+                EditorUtility.ClearProgressBar();
                 return;
             }
+
+            EditorUtility.DisplayProgressBar("Setting up Music Service Example", "Copying media files to streaming assets", 0.6f);
 
             if(!_instance.MoveStreamingAssets())
             {
+                EditorUtility.ClearProgressBar();
                 return;
             }
 
+            EditorUtility.DisplayProgressBar("Setting up Music Service Example", "Creating/Modifying Example Music Provider package", 0.8f);
+
             if (!_instance.CreateOrModifyPackage())
             {
+                EditorUtility.ClearProgressBar();
                 return;
             }
+
+            EditorUtility.DisplayProgressBar("Setting up Music Service Example", "Refreshing Asset Database", 1.0f);
 
             AssetDatabase.Refresh();
 
             UnityEngine.Debug.Log("Successfully setup project for music service example.");
+            EditorUtility.ClearProgressBar();
         }
 
         private bool BuildProvider()
         {
-            string _mabuFile = "\"" + Path.Combine(_musicExampleMabuPath, "example_music_provider.mabu") + "\"";
+            string _mabuFile = "\"" + Path.Combine(_musicExampleMabuPath, "ExampleMusicProvider.mabu") + "\"";
             string _argumentString = String.Format("{0} -t {1} --out \"{2}\"", _mabuFile, "device", _projectRoot);
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = _sdk.Mabu.Path;
@@ -93,10 +110,10 @@ namespace UnityEditor.Experimental.XR.MagicLeap
                 return false;
             }
 
-            string outputProvider = Path.Combine(_projectRoot, Path.Combine("debug_lumin_clang-3.8_aarch64", "example_music_provider"));
+            string outputProvider = Path.Combine(_projectRoot, Path.Combine("debug_lumin_clang-3.8_aarch64", "ExampleMusicProvider"));
             if (File.Exists(outputProvider))
             {
-                File.Copy(outputProvider, Path.Combine(Application.dataPath, @"../example_music_provider"), true);
+                File.Copy(outputProvider, Path.Combine(Application.dataPath, @"../ExampleMusicProvider"), true);
             }
             else
             {
@@ -125,16 +142,16 @@ namespace UnityEditor.Experimental.XR.MagicLeap
 
             string contents = File.ReadAllText(packageFile);
             bool hasDATAS = contents.Contains("DATAS");
-            bool hasProvider = contents.Contains("example_music_provider");
+            bool hasProvider = contents.Contains("ExampleMusicProvider : bin/");
             if (hasDATAS && !hasProvider)
             {
-                UnityEngine.Debug.LogErrorFormat("Error: MusicExampleBuilder.CreateOrModifyPackage failed. Reason: Package file at {0} already contained a DATAS entry but not the reference to example_music_provider.\n" +
-                    "Delete the .package file or manually add example_music_provider.", packageFile);
+                UnityEngine.Debug.LogErrorFormat("Error: MusicExampleBuilder.CreateOrModifyPackage failed. Reason: Package file at {0} already contained a DATAS entry but not the reference to ExampleMusicProvider.\n" +
+                    "Delete the .package file or manually add ExampleMusicProvider.", packageFile);
                 return false;
             }
             else if (!hasDATAS)
             {
-                File.AppendAllText(packageFile, "\nDATAS = \\\n\texample_music_provider \\");
+                File.AppendAllText(packageFile, "\nDATAS = \\\n\tExampleMusicProvider : bin/ \\");
             }
 
             return true;
@@ -146,7 +163,7 @@ namespace UnityEditor.Experimental.XR.MagicLeap
 
             Directory.CreateDirectory(Path.GetDirectoryName(manifestPath));
 
-            if (File.Exists(manifestPath) && !File.ReadAllText(manifestPath).Contains("example_music_provider"))
+            if (File.Exists(manifestPath) && !File.ReadAllText(manifestPath).Contains("ExampleMusicProvider"))
             {
                 UnityEngine.Debug.LogError("Error: MusicExampleBuilder.MoveCustomManifest failed. Reason: Custom manifest already exists. Cannot overwrite with music custom manifest. Please remove the custom manifest and try again.");
                 return false;
@@ -172,6 +189,10 @@ namespace UnityEditor.Experimental.XR.MagicLeap
             string fileName;
             foreach (string file in Directory.GetFiles(assetsPath))
             {
+                if (file.ToLower().EndsWith(".meta"))
+                {
+                    continue;
+                }
                 fileName = Path.GetFileName(file);
                 File.Copy(Path.Combine(assetsPath, fileName), Path.Combine(streamingAssetsPath, fileName), true);
             }

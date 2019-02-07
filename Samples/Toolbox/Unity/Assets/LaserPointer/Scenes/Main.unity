@@ -781,6 +781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 624255114}
   - component: {fileID: 624255113}
+  - component: {fileID: 624255115}
   m_Layer: 0
   m_Name: LaserPointer
   m_TagString: Untagged
@@ -823,6 +824,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &624255115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 624255112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a97f3537f2d37646a8c44e6430249fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &685951607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,7 +1013,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 861943851}
-  - component: {fileID: 861943850}
   m_Layer: 0
   m_Name: Cubes
   m_TagString: sceneObject
@@ -1009,17 +1020,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &861943850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 861943849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c0bb454694cdd9419a1e85ea7f5e82a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &861943851
 Transform:
   m_ObjectHideFlags: 0
